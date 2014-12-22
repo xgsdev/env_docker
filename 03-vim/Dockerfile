@@ -1,38 +1,43 @@
-FROM dockerfile/nodejs-bower-grunt 
+FROM dockerfile/nodejs-bower-grunt
 
 RUN apt-get update && apt-get -y upgrade
 
-RUN apt-get -y install curl git vim-nox wget less gzip screen
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get -y install curl git vim-nox wget less locales htop libfontconfig1-dev
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* 
+
+RUN npm cache clean
 
 RUN npm install -g npm
+
+RUN npm install -g jshint
 
 # **** add user *****
 RUN adduser --disabled-password --gecos "" uservim
 RUN echo "uservim ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
 # ***********
 
-RUN npm cache clean
+RUN cp /usr/share/zoneinfo/America/New_York /etc/localtime
 
-RUN apt-get -y install htop sudo libfontconfig1-dev
+RUN dpkg-reconfigure locales
 
-exit
+RUN locale-gen en_US.UTF-8
 
-
-RUN npm install -g jshint
-
-RUN npm install -g grunt-contrib-jshint
-
-RUN npm install -g grunt-init
-
-RUN git clone https://github.com/gruntjs/grunt-init-gruntfile.git /home/uservim/.grunt-init/gruntfile
+RUN /usr/sbin/update-locale LANG=en_US.UTF-8
 
 WORKDIR /home/uservim/code
 
 ENV HOME /home/uservim/
 
+ENV LC_ALL en_US.UTF-8
+
+ENV LANG en_US.UTF-8
+
 USER uservim
 
-VOLUME ["/home"]
+#VOLUME ["/home"]
 
-EXPOSE 8080
+#ENTRYPOINT ["vim"]
+CMD ["vim"]

@@ -1,1 +1,1 @@
-docker build -t="me_webapp" .
+docker build -t="me_vim" .
