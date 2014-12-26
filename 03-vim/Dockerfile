@@ -27,17 +27,19 @@ RUN locale-gen en_US.UTF-8
 
 RUN /usr/sbin/update-locale LANG=en_US.UTF-8
 
-WORKDIR /home/uservim/code
-
 ENV HOME /home/uservim/
+
+WORKDIR /home/uservim/code
 
 ENV LC_ALL en_US.UTF-8
 
 ENV LANG en_US.UTF-8
 
+RUN chown -R uservim:uservim $HOME
+
 USER uservim
 
-#VOLUME ["/home"]
+RUN mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle && \
+    wget -P $HOME/.vim/autoload https://tpo.pe/pathogen.vim
 
-#ENTRYPOINT ["vim"]
 CMD ["vim"]
