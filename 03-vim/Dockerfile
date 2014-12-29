@@ -42,4 +42,4 @@ USER uservim
 RUN mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle && \
     wget -P $HOME/.vim/autoload https://tpo.pe/pathogen.vim
 
-CMD ["vim"]
+#CMD ["vim"]

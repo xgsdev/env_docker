@@ -1,1 +1,1 @@
-docker build -t="me_vim" .
+docker build -t="base_vim" .

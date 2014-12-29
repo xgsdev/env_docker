@@ -6,4 +6,4 @@ docker run \
 \
 -v $DIR:/home/uservim/code/ \
 \
--it 1abf8c80218c
+-it me_vim
