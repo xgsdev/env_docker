@@ -39,7 +39,8 @@ RUN chown -R uservim:uservim $HOME
 
 USER uservim
 
-RUN mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle && \
+RUN mkdir -p $HOME/.vim/autoload && \
     wget -P $HOME/.vim/autoload https://tpo.pe/pathogen.vim
 
-#CMD ["vim"]
+RUN git clone https://github.com/xgsdev/tpl_bundle.git /home/uservim/.vim/bundle
+
