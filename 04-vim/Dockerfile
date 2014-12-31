@@ -1,5 +1,5 @@
 FROM base_vim
 
-ADD ./workingvimrc /home/uservim/.vimrc
+RUN wget -O /home/uservim/.vimrc https://raw.githubusercontent.com/xgsdev/env_vim/master/vimrc 
 
 CMD ["vim"]

@@ -44,3 +44,4 @@ RUN mkdir -p $HOME/.vim/autoload && \
 
 RUN git clone https://github.com/xgsdev/tpl_bundle.git /home/uservim/.vim/bundle
 
+RUN cd $HOME/.vim/bundle/vimproc.vim && make
