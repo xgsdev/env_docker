@@ -42,6 +42,3 @@ USER uservim
 RUN mkdir -p $HOME/.vim/autoload && \
     wget -P $HOME/.vim/autoload https://tpo.pe/pathogen.vim
 
-RUN git clone https://github.com/xgsdev/tpl_bundle.git /home/uservim/.vim/bundle
-
-RUN cd $HOME/.vim/bundle/vimproc.vim && make

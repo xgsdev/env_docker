@@ -6,4 +6,4 @@ docker run \
 \
 -v $DIR:/home/uservim/code/ \
 \
--it me_vim
+-it me_vim /bin/bash
