@@ -1,0 +1,15 @@
+{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+    "main.js"
+  ],
+  "plugins": {
+    "angular": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}
