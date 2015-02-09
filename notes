@@ -1,0 +1,10 @@
+Docker Management
+---
+
+*remove images*
+
+docker ps -a | grep Exit | awk '{print $1}' | xargs docker rm
+
+docker images -a | grep "<none>" | awk '{print $3}' | xargs docker rmi 
+
+
