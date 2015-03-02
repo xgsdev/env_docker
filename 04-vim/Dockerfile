@@ -1,11 +1,14 @@
 FROM base_vim
 
-RUN git clone https://github.com/xgsdev/tpl_bundle.git /home/uservim/.vim/bundle
+RUN git clone https://github.com/hspin/env_vim_dev.git  /tmp/myvim \
+    && mv /tmp/myvim/bundle /home/uservim/.vim/ \
+    && mv /tmp/myvim/vimrc-2 /home/uservim/.vimrc \
+    && rm -rf /tmp/myvim
 
 RUN cd $HOME/.vim/bundle/vimproc.vim && make
 
 RUN cd $HOME/.vim/bundle/tern_for_vim && npm install
 
-RUN wget -O /home/uservim/.vimrc https://raw.githubusercontent.com/xgsdev/env_vim/master/vimrc 
+ADD gitignore /home/uservim/.gitignore
 
 CMD ["vim"]
